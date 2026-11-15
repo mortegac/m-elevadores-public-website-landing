@@ -6,6 +6,9 @@ body :is(h1,h2){font-size:52px;font-weight:800;line-height:60px;}
 body h2{width:100%;margin:0;margin-bottom:16px;text-align:left;font-size:36px;font-weight:700;line-height:64px;}
 @media(max-width:960px){body h2{font-size:32px;font-weight:700;line-height:40px;}}
 @media(max-width:600px){body h2{text-align:left;}}
+/* Keep original h1 geometry on semantically level-two section titles. */
+.reference-heading{width:auto;margin:.67em 0;text-align:inherit;font-size:52px;font-weight:800;line-height:60px}
+@media(max-width:960px){.reference-heading{font-size:40px;line-height:52px}}
 body h3{margin:0;margin-bottom:8px;font-size:24px;font-weight:500;line-height:32px;}
 @media(max-width:960px){body h3{font-size:16px;font-weight:500;line-height:24px;}}
 body p{margin:0;font-size:16px;font-weight:400;line-height:24px;}
@@ -425,7 +428,6 @@ html{scroll-behavior:smooth}section,[id]{scroll-margin-top:1rem}
 .faq-question{list-style:none}.faq-question::-webkit-details-marker{display:none}.faq-item[open] .faq-question{background:#3962e9;color:white;border-radius:5px}.faq-item[open] .faq-answer{opacity:1;max-height:none;overflow:visible}.faq-item[open] .faq-question span::after{transform:rotate(90deg)}
 .review-rail{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:.5rem .25rem 1rem;scrollbar-width:thin;align-items:stretch}.review-rail .review-card{flex:0 0 calc((100% - 2rem)/3);width:auto;min-width:0;max-width:none;scroll-snap-align:start;margin:0}.review-dots{display:flex;justify-content:center;gap:.75rem}.review-dots a{font-size:1.6rem;line-height:1;color:#999;text-decoration:none;padding:.25rem}.review-dots a:first-child{color:#3962e9}
 @media(max-width:767px){.review-rail .review-card{flex-basis:100%}}
-.field-space{display:block;min-height:1.2rem;font-size:.8rem;visibility:hidden}
 :focus-visible{outline:3px solid #ffa800;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){html,.review-rail{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
@@ -440,3 +442,24 @@ html{scroll-behavior:smooth}section,[id]{scroll-margin-top:1rem}
   .native-menu-links{position:static;box-shadow:none;padding:0 0 .5rem}
 }
 @media(max-width:768px){.native-menu[open]>summary{right:1rem}}
+
+/* Match the reference before video metadata arrives and at mobile process layout. */
+@media(max-width:768px){
+ .gBUHLM .step-wrapper{flex-direction:column;gap:.75rem;margin-top:0;padding-bottom:0}
+ .gBUHLM .step-wrapper::before{display:none}
+ .gBUHLM .step{flex-direction:row;align-items:center;gap:1rem;background:#f5f7ff;padding:1rem;border-radius:10px;border-left:3px solid #3962e9}
+ .gBUHLM .step .step-number{flex-shrink:0;width:40px;height:40px;padding:10px;font-size:1.5rem;border-radius:5px;margin-bottom:0}
+ .gBUHLM .step .step-text{text-align:left;max-width:none}
+}
+
+/* Match the original slider slots, including their inner gutters and rounding. */
+.bzAuGi{position:relative}
+.review-rail{gap:0;padding:10px 4px;align-items:flex-start;scrollbar-width:none;scroll-padding-inline:12px}
+.review-rail::-webkit-scrollbar{display:none}
+.review-rail .review-card{display:block;margin:0 8px;flex-basis:calc(100% - 8px);flex-basis:calc(round(up,calc(100% + 8px),1px) - 16px)}
+.review-dots{position:absolute;left:0;right:0;bottom:10px;height:26px;gap:10px;align-items:center}
+.review-dots a{display:flex;align-items:center;justify-content:center;width:20px;height:26px;padding:0}
+@media(min-width:768px){.review-rail{scroll-padding-inline:16px}.review-rail .review-card{margin:0 12px;flex-basis:calc((100% + 8px)/2 - 24px);flex-basis:calc(round(up,calc((100% + 8px)/2),1px) - 24px)}.review-rail .review-card:last-child{order:-1}}
+@media(min-width:960px){.review-rail{padding:16px 8px;scroll-padding-inline:24px}.review-rail .review-card{margin:0 16px;flex-basis:calc((100% + 16px)/2 - 32px);flex-basis:calc(round(up,calc((100% + 16px)/2),1px) - 32px)}}
+@media(min-width:1024px){.review-rail .review-card{flex-basis:calc((100% + 16px)/3 - 32px);flex-basis:calc(round(up,calc((100% + 16px)/3),1px) - 32px)}}
+.bbINEA{aspect-ratio:1080/1972}
