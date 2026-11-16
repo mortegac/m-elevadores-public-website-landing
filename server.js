@@ -129,8 +129,9 @@ async function handler(req, res) {
   let pathname;
   try { pathname = decodeURIComponent(url.pathname); } catch { return send(res, 400, 'Ruta no válida.'); }
   const segments = pathname.split('/').filter(Boolean);
-  if (!segments.length || !Object.hasOwn(ROUTES, segments[0]) || segments.some(s => s === '.' || s === '..' || s.startsWith('.') || s.includes('\\'))) return send(res, 404, 'Página no encontrada.');
-  if (segments.length === 1) segments.push('index.html');
+  const isAsset = segments[0] === 'assets';
+  if (!segments.length || (!isAsset && !Object.hasOwn(ROUTES, segments[0])) || segments.some(s => s === '.' || s === '..' || s.startsWith('.') || s.includes('\\'))) return send(res, 404, 'Página no encontrada.');
+  if (segments.length === 1 && !isAsset) segments.push('index.html');
   const extension = path.extname(segments.at(-1)).toLowerCase();
   if (!Object.hasOwn(TYPES, extension)) return send(res, 404, 'Página no encontrada.');
   try {

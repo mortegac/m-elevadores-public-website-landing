@@ -46,6 +46,17 @@ test('entrega la página solicitada y rechaza archivos internos', async () => {
   assert.equal(secretFile.status, 404);
 });
 
+test('entrega los recursos compartidos sin exponer archivos fuera de assets', async () => {
+  const stylesheet = await fetch(`${base}/assets/clientes.css`);
+  assert.equal(stylesheet.status, 200);
+  assert.match(stylesheet.headers.get('content-type'), /^text\/css/);
+  assert.equal((await fetch(`${base}/assets`)).status, 404);
+  assert.equal((await fetch(`${base}/assets/%2e%2e%2fserver.js`)).status, 404);
+  assert.equal((await fetch(`${base}/assets/%2e%2e%5cserver.js`)).status, 404);
+  assert.equal((await fetch(`${base}/assets/.env`)).status, 404);
+  assert.equal((await fetch(`${base}/assets/missing.png`)).status, 404);
+});
+
 test('envía JSON al servicio y muestra la confirmación solo tras el éxito', async () => {
   received = [];
   const response = await fetch(`${base}/api/cotizacion`, { method: 'POST', headers: { Referer: `${base}/${slug}?utm_source=test` }, body: form(), redirect: 'manual' });

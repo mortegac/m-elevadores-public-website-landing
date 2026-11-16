@@ -1,0 +1,26 @@
+/* Shared client strip: continuous CSS-only motion. */
+.client-strip{position:relative;background:#fff;color:#243c70;padding:36px 0 30px;border-bottom:1px solid #e7ecf5;overflow:hidden}
+.client-strip .client-strip-heading{box-sizing:border-box;width:100%;max-width:1200px;margin:0 auto 8px;padding:0 24px;text-align:center;font-size:25px;font-weight:700;line-height:1.4}
+.client-strip .client-strip-intro{padding:0 24px;text-align:center;color:#58677f;font-size:15px;line-height:1.6}
+.client-strip-window{overflow:hidden;margin-top:24px;padding:6px 0}
+.client-strip-track{display:flex;width:max-content;animation:client-strip-scroll 48s linear infinite;will-change:transform}
+.client-strip-list{display:flex;align-items:center;gap:36px;list-style:none;margin:0;padding:0 36px 0 0}
+.client-strip-list li{display:flex;align-items:center;justify-content:center;flex:0 0 170px;width:170px;height:90px;padding:12px;box-sizing:border-box}
+.client-strip-list img{display:block;max-width:100%;width:auto;max-height:66px;height:auto;object-fit:contain}
+.client-strip-list .client-strip-emblem{max-height:76px}
+@media(hover:hover){.client-strip-window:hover .client-strip-track{animation-play-state:paused}}
+@keyframes client-strip-scroll{to{transform:translateX(-50%)}}
+@media(max-width:600px){
+ .client-strip{padding:28px 0 22px}
+ .client-strip .client-strip-heading{font-size:22px}
+ .client-strip .client-strip-intro{font-size:14px}
+ .client-strip-list{gap:24px;padding-right:24px}
+ .client-strip-list li{flex-basis:145px;width:145px;height:84px}
+ .client-strip-list img{max-height:60px}
+ .client-strip-list .client-strip-emblem{max-height:70px}
+}
+@media(prefers-reduced-motion:reduce){
+ .client-strip-track{width:100%;animation:none;transform:none;will-change:auto}
+ .client-strip-list{flex-wrap:wrap;justify-content:center;width:100%;max-width:1200px;margin:0 auto;gap:20px 24px;padding:0 24px;box-sizing:border-box}
+ .client-strip-list[aria-hidden]{display:none}
+}
